@@ -6,6 +6,6 @@
     /* CSS/SCSS styles go here */
 </style>
 
-<template>
-    <!-- HTML structure goes here -->
-</template>
+<header>
+    <h1>Header goes here</h1>
+</header>
