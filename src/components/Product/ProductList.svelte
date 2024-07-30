@@ -2,10 +2,13 @@
   import { onMount } from 'svelte';
   import LoadingCard from "./LoadingCard.svelte";
   import Error from "../Error.svelte";
+  import Filter from '../Filter.svelte';
 
   let products = [];
   let loading = true;
   let error = null;
+  let categories = [];
+  let selectedCategory = '';
 
   async function getProducts() {
   try {
@@ -14,10 +17,34 @@
       throw new error("Failed to fetch products");
     }
     products = await response.json();
+      // Extract unique categories from products
+      categories = [...new Set(products.map(product => product.category))];
+    } catch (err) {
+      error = err.message;
+    } finally {
+      loading = false;
+    }
+  }
+
+  async function getProductsByCategory(category) {
+    try {
+      loading = true;
+      error = null;
+      let response = await fetch(`https://fakestoreapi.com/products/category/${category}`);
+    products = await response.json();
   } catch (err) {
     error = err.message;
   } finally {
     loading = false;
+  }
+}
+
+  function handleCategoryChange(category) {
+    selectedCategory = category;
+    if (selectedCategory) {
+      getProductsByCategory(selectedCategory);
+    } else {
+      getProducts();
   }
 }
 
@@ -35,6 +62,7 @@ onMount(() => {
   {:else if error}
     <Error message={error} />
   {:else if products.length > 0}
+  <Filter {categories} {selectedCategory} onCategoryChange={handleCategoryChange} />
   <div class="grid justify-center">
     <div class="grid gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 my-4 ">
       {#each products as product}
