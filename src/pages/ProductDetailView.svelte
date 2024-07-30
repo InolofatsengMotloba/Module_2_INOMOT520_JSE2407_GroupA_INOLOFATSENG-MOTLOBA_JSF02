@@ -37,6 +37,16 @@
   });
 </script>
 
-<main>
-    <h1>Products Detailed Page</h1>
-</main>
+{#if error}
+  <div class="flex justify-center">
+    <Error message={error} />
+  </div>
+{:else if loading}
+  <div class="flex justify-center">
+    <LoadingCard />
+  </div>
+{:else}
+  <div class="flex justify-center">
+    <h1>{product.title}</h1>
+  </div>
+{/if}
