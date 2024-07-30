@@ -29,6 +29,18 @@ onMount(() => {
 
 <style></style>
 
-<main>
-    <h1>Product List goes here</h1>
-</main>
+<div>
+  {#if loading}
+    <LoadingCard />
+  {:else if error}
+    <Error message={error} />
+  {:else if products.length > 0}
+    <ul>
+      {#each products as product}
+        <li>{product.title}</li>
+      {/each}
+    </ul>
+  {:else}
+    <p>No products found.</p>
+  {/if}
+</div>
