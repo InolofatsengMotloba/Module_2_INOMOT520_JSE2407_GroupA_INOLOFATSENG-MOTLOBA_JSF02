@@ -2,6 +2,10 @@
   import { onMount } from 'svelte';
   import LoadingCard from '../components/Product/LoadingCard.svelte';
   import Error from '../components/Error.svelte';
+
+  let product = {};
+  let error = null;
+  let loading = false;
 </script>
 
 <main>
