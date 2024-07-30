@@ -38,11 +38,11 @@
 </script>
 
 {#if error}
-  <div class="flex justify-center">
+  <div class="flex justify-center p-5">
     <Error message={error} />
   </div>
 {:else if loading}
-  <div class="flex justify-center">
+  <div class="flex justify-center p-5">
     <LoadingCard />
   </div>
 {:else}
