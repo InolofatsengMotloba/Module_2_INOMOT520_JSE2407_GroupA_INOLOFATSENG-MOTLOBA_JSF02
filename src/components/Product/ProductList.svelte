@@ -76,7 +76,24 @@ onMount(() => {
 
 </script>
 
-<style></style>
+<style>
+  .container {
+  display: grid;
+  gap: 1rem; 
+  column-gap: 12rem;
+  margin-top: 0.75rem; 
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+  }
+
+  @media (min-width: 1024px) { 
+  .container {
+      display: flex;
+      align-items: flex-start;
+  }
+}
+</style>
 
 <div>
   {#if loading}
@@ -84,8 +101,10 @@ onMount(() => {
   {:else if error}
     <Error message={error} />
   {:else if filteredProducts.length > 0}
-    <Filter {categories} {selectedCategory} onCategoryChange={handleCategoryChange} />
-    <Sort  onSortChange={handleSortChange} />
+    <div class="container">
+      <Filter {categories} {selectedCategory} onCategoryChange={handleCategoryChange} />
+      <Sort  onSortChange={handleSortChange} />
+    </div>
     <div class="grid justify-center">
       <div class="grid gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 my-4 ">
         {#each filteredProducts as product}
