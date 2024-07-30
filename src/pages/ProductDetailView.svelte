@@ -46,7 +46,16 @@
     <LoadingCard />
   </div>
 {:else}
-  <div class="flex justify-center">
+  <div>
+    <img class="object-contain h-48 mt-3" src={product.image}  alt={product.title} />
     <h1>{product.title}</h1>
+    <p>{product.description}</p>
+    <h2>$ {product.price}</h2>
+    <div class="justify-start flex-1">
+        <span
+        >{product.category}</span>
+    </div>
+    <p>⭐ {product.rating?.rate}</p>
+    <p>reviews: {product.rating?.count}</p>
   </div>
 {/if}
