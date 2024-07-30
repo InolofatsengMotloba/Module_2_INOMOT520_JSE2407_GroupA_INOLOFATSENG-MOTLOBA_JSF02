@@ -21,6 +21,10 @@
   }
 }
 
+onMount(() => {
+  getProducts();
+});
+
 </script>
 
 <style></style>
