@@ -96,15 +96,22 @@ onMount(() => {
 </style>
 
 <div>
+  <div class="container">
+    <Filter {categories} {selectedCategory} onCategoryChange={handleCategoryChange} />
+    <Sort  onSortChange={handleSortChange} />
+  </div>
   {#if loading}
-    <LoadingCard />
+    <div class="grid justify-center">
+      <div class="lg:max-h-[130rem] max-w-xl mx-auto grid gap-4 grid-cols-1 lg:grid-cols-4 md:grid-cols-2 items-center lg:max-w-none my-4">
+        {#each new Array(20).fill(null) as _, index}
+          <LoadingCard />
+        {/each}
+      </div>
+    </div>
+    
   {:else if error}
     <Error message={error} />
   {:else if filteredProducts.length > 0}
-    <div class="container">
-      <Filter {categories} {selectedCategory} onCategoryChange={handleCategoryChange} />
-      <Sort  onSortChange={handleSortChange} />
-    </div>
     <div class="grid justify-center">
       <div class="grid gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 my-4 ">
         {#each filteredProducts as product}
@@ -155,7 +162,7 @@ onMount(() => {
       </div>
     </div>
     {:else}
-      <p>No products found.</p>
+      <p class="grid justify-center">No products found.</p>
     {/if}
   </div>
 
