@@ -1,5 +1,4 @@
 <script>
-    import Sort from "../components/Sort.svelte";
     import ProductList from "../components/Product/ProductList.svelte";
 </script>
 
@@ -24,7 +23,6 @@
 
 <main>
     <div class="container">
-        <Sort />
     </div>
     <ProductList />
 </main>
