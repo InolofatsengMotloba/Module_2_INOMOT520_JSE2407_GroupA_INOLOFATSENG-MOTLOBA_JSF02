@@ -47,6 +47,9 @@
   </div>
 {:else}
   <div>
+    <a href="/">
+        <button class="bg-slate-500" >Back</button>
+    </a>
     <img class="object-contain h-48 mt-3" src={product.image}  alt={product.title} />
     <h1>{product.title}</h1>
     <p>{product.description}</p>
