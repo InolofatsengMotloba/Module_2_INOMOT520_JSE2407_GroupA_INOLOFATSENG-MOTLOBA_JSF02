@@ -1,4 +1,8 @@
-<script></script>
+<script>
+  import { onMount } from 'svelte';
+  import LoadingCard from "./LoadingCard.svelte";
+  import Error from "../Error.svelte";
+</script>
 
 <style></style>
 
