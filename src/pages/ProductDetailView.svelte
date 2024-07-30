@@ -24,6 +24,17 @@
       return { response: null, error: error.message };
     }
   }
+
+  onMount(async () => {
+    loading = true;
+    const { response, error: fetchError } = await getProductDetails(id);
+    if (fetchError) {
+      error = fetchError;
+    } else {
+      product = response;
+    }
+    loading = false;
+  });
 </script>
 
 <main>
