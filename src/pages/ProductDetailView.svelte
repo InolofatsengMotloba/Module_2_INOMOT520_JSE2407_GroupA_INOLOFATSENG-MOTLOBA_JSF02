@@ -6,6 +6,9 @@
   let product = {};
   let error = null;
   let loading = false;
+
+  export let id;
+
 </script>
 
 <main>
